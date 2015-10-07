@@ -66,29 +66,29 @@ RUN useradd -m dev
  
 USER dev
  
-RUN mkdir /home/dev/workspace
 
-WORKDIR /home/dev/workspace
+WORKDIR /home/dev
 
 # Clone and init rancher-ui
-RUN git clone 'https://github.com/rancher/ui'
-WORKDIR /home/dev/workspace/ui
-RUN git submodule init
-RUN git submodule update
-RUN npm install
-RUN bower install
-WORKDIR /home/dev/workspace/
+# Launch manually the following command when you mount the volume
+#RUN git clone 'https://github.com/rancher/ui'
+#WORKDIR /home/dev/workspace/ui
+#RUN git submodule init
+#RUN git submodule update
+#RUN npm install
+#RUN bower install
+#WORKDIR /home/dev/workspace/
 
 # Clone and init cattle
-RUN git clone https://github.com/rancherio/cattle.git
+#RUN git clone https://github.com/rancherio/cattle.git
 
 # Clone and init python-agent
-RUN git clone https://github.com/rancher/python-agent.git
-WORKDIR /home/dev/workspace/python-agent
-RUN mkdir venv && virtualenv venv && . venv/bin/activate
-RUN pip install -r requirements.txt
-RUN pip install -r test-requirements.txt
-WORKDIR /home/dev/workspace/
+#RUN git clone https://github.com/rancher/python-agent.git
+#WORKDIR /home/dev/workspace/python-agent
+#RUN mkdir venv && virtualenv venv && . venv/bin/activate
+#RUN pip install -r requirements.txt
+#RUN pip install -r test-requirements.txt
+#WORKDIR /home/dev/workspace/
 
 
 
