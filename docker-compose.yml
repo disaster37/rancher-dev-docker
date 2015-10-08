@@ -1,0 +1,22 @@
+ide:
+  image: webcenter/rancher-dev:latest
+  volumes:
+    - ./home:/home/dev
+    - /tmp/.X11-unix:/tmp/.X11-unix:ro
+  environment:
+    - DISPLAY
+  ports:
+    - "8080:8080"
+
+shell:
+  image: webcenter/rancher-dev:latest
+  volumes:
+    - ./home:/home/dev
+    - /tmp/.X11-unix:/tmp/.X11-unix:ro
+  environment:
+    - DISPLAY
+  command: xfce4-terminal --command '/bin/bash' --title 'Rancher Dev Shell'
+  ports:
+    - "8000:8000"
+
+
