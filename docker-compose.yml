@@ -15,8 +15,16 @@ shell:
     - /tmp/.X11-unix:/tmp/.X11-unix:ro
   environment:
     - DISPLAY
+    - RANCHER_ENDPOINT=cattle
   command: xfce4-terminal --command '/bin/bash' --title 'Rancher Dev Shell'
+  privileged: true
   ports:
     - "8000:8000"
+  links:
+   - cattle
 
+cattle:
+  image: rancher/server:latest
+  ports:
+    - "8081:8080"
 
